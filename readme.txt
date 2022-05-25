@@ -25,7 +25,7 @@ I haven't found a lightbox that is optimized for Gutenberg galleries. Many gener
  == Changelog ==
 
 =1.2 =
-* test for wp 5.9
+* test for wp 5.9. Works with updated wp-blocks-gallery class
 
 =1.1 =
 * Ensure that lightbox is above all other elements on the page
