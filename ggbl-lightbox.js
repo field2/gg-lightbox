@@ -4,12 +4,6 @@ jQuery(document).ready(function($) {
 	$('.wp-block-gallery a').click(function(e) {
 		// prevent default click event
 		e.preventDefault();
-		// scroll to the top of the page if they've scrolled down
-		var scroll = $(window).scrollTop();
-		console.log("windowscroll is " + scroll);
-		if (scroll !== 0) {
-			$(window).scrollTop(0);
-		}
 		// get href from clicked element
 		var image_href = $(this).attr("href");
 		console.log(image_href);
@@ -26,7 +20,7 @@ jQuery(document).ready(function($) {
 			// create HTML markup for lightbox window
 			var lightbox =
 				'<div id="ggbl_lightbox">' +
-				'<a href="#" class="ggbl_close"></a>' +
+				'<div class="ggbl_close"></div>' +
 				'<ul id="ggbl_slider"></ul>' +
 				'<div class="ggbl_nav">' +
 				'<a href="#" class="ggbl_prev ggbl_slide-nav"></a>' +
