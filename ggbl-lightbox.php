@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/field2/ggblb_lightbox
  * Description: A simple lightbox and slider built specifically for the Gutenberg Gallery block
  * Author: Ben Dunkle
- * Version: 1.2
+ * Version: 1.2.2
  * Author URI: https://bendunkle.com/
  * License: GPL2
  */

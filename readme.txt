@@ -3,7 +3,7 @@ Contributors: Ben Dunkle (@empireoflight)
 Tags: Gutenberg Gallery Block, gallery, lightbox, slider, photography, images
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,9 @@ This plugin transforms the Gutenberg gallery block into a lightbox with previous
 I haven't found a lightbox that is optimized for Gutenberg galleries. Many generate their own gallery formats or contain unneccesary options. I wanted to build one that was as minimal as possible, while offering a functional and elegant experience.
  
  == Changelog ==
+
+=1.2.2 =
+* Changed lightbox to position:fixed to prevent unwanted scrolling. Props @Antahai
 
 =1.2.1 =
 * test for wp 6.0. Adds support for left/right arrow key navigation. Adds support for ESC key to close gallery.
