@@ -23,6 +23,8 @@ This plugin transforms the Gutenberg gallery block into a lightbox with previous
 I haven't found a lightbox that is optimized for Gutenberg galleries. Many generate their own gallery formats or contain unneccesary options. I wanted to build one that was as minimal as possible, while offering a functional and elegant experience.
  
  == Changelog ==
+ =1.2.2 =
+* added icons for left/right and close.
 
 =1.2.1 =
 * test for wp 6.0. Adds support for left/right arrow key navigation. Adds support for ESC key to close gallery.
