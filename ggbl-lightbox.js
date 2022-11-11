@@ -4,16 +4,10 @@ jQuery(document).ready(function($) {
 	$('.wp-block-gallery a').click(function(e) {
 		// prevent default click event
 		e.preventDefault();
-		// scroll to the top of the page if they've scrolled down
-		var scroll = $(window).scrollTop();
-		if (scroll !== 0) {
-			$(window).scrollTop(0);
-		}
-		// get href from clicked element
-		var image_href = $(this).attr("href");
 		// determine the index of clicked trigger
 		var slideNum = $('.wp-block-gallery a').index(this);
-
+		// make sure the user can't scroll while the lightbox is showing
+		$('body').addClass("ggbl_noscroll");
 		// find out if #ggbl_lightbox exists
 		if ($('#ggbl_lightbox').length > 0) {
 			// if it does
@@ -32,8 +26,6 @@ jQuery(document).ready(function($) {
 				'</div><!-- #ggbl_lightbox -->';
 			// add lightbox HTML to the DOM
 			$('body').append(lightbox);
-			// make sure the user can't scroll while the lightbox is showing
-			$('body').addClass("ggbl_noscroll");
 			// fill lightbox with .blocks-gallery-grid a hrefs
 			$('.wp-block-gallery').find('.wp-block-image a').each(function() {
 				var $href = $(this).attr('href');
