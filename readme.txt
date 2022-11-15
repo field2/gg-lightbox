@@ -24,7 +24,7 @@ I haven't found a lightbox that is optimized for Gutenberg galleries. Many gener
  
  == Changelog ==
  =1.2.3 =
-* added icons for left/right and close.
+* replaced left/right/close icons with Dashicons for better mobile experience. Props @xbindt
 
 =1.2.2 =
 * Changed lightbox to position:fixed to prevent unwanted scrolling. Props @Antahai
