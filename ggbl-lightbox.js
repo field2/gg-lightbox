@@ -4,13 +4,10 @@ jQuery(document).ready(function($) {
 	$('.wp-block-gallery a').click(function(e) {
 		// prevent default click event
 		e.preventDefault();
-		// get href from clicked element
-		var image_href = $(this).attr("href");
-		console.log(image_href);
 		// determine the index of clicked trigger
 		var slideNum = $('.wp-block-gallery a').index(this);
-		console.log(slideNum);
-
+		// make sure the user can't scroll while the lightbox is showing
+		$('body').addClass("ggbl_noscroll");
 		// find out if #ggbl_lightbox exists
 		if ($('#ggbl_lightbox').length > 0) {
 			// if it does
@@ -20,17 +17,15 @@ jQuery(document).ready(function($) {
 			// create HTML markup for lightbox window
 			var lightbox =
 				'<div id="ggbl_lightbox">' +
-				'<div class="ggbl_close"></div>' +
+				'<a href="#" class="ggbl_close"><span class="dashicons dashicons-no-alt"></span></a>' +
 				'<ul id="ggbl_slider"></ul>' +
 				'<div class="ggbl_nav">' +
-				'<a href="#" class="ggbl_prev ggbl_slide-nav"></a>' +
-				'<a href="#" class="ggbl_next ggbl_slide-nav"></a>' +
+				'<a href="#" class="ggbl_prev ggbl_slide-nav"><span class="dashicons dashicons-arrow-left-alt2"></span></a>' +
+				'<a href="#" class="ggbl_next ggbl_slide-nav"><span class="dashicons dashicons-arrow-right-alt2"></span></a>' +
 				'</div><!-- .ggbl_nav -->' +
 				'</div><!-- #ggbl_lightbox -->';
 			// add lightbox HTML to the DOM
 			$('body').append(lightbox);
-			// make sure the user can't scroll while the lightbox is showing
-			$('body').addClass("ggbl_noscroll");
 			// fill lightbox with .blocks-gallery-grid a hrefs
 			$('.wp-block-gallery').find('.wp-block-image a').each(function() {
 				var $href = $(this).attr('href');
@@ -96,8 +91,6 @@ jQuery(document).ready(function($) {
 		}
 
 	}
-
-
 
 	// navigation prev/next
 	$('body').on('click', '.ggbl_slide-nav', function(e) {
