@@ -2,47 +2,50 @@ jQuery(document).ready(function($) {
 	// global variables for script
 	var current, size;
 	$('.wp-block-gallery a').click(function(e) {
-		// prevent default click event
-		e.preventDefault();
-		// determine the index of clicked trigger
-		var slideNum = $('.wp-block-gallery a').index(this);
-		// make sure the user can't scroll while the lightbox is showing
-		$('body').addClass("ggbl_noscroll");
-		// find out if #ggbl_lightbox exists
-		if ($('#ggbl_lightbox').length > 0) {
-			// if it does
-			$('#ggbl_lightbox').fadeIn(300);
-			// otherwise
-		} else {
-			// create HTML markup for lightbox window
-			var lightbox =
-				'<div id="ggbl_lightbox">' +
-				'<a href="#" class="ggbl_close"><span class="dashicons dashicons-no-alt"></span></a>' +
-				'<ul id="ggbl_slider"></ul>' +
-				'<div class="ggbl_nav">' +
-				'<a href="#" class="ggbl_prev ggbl_slide-nav"><span class="dashicons dashicons-arrow-left-alt2"></span></a>' +
-				'<a href="#" class="ggbl_next ggbl_slide-nav"><span class="dashicons dashicons-arrow-right-alt2"></span></a>' +
-				'</div><!-- .ggbl_nav -->' +
-				'</div><!-- #ggbl_lightbox -->';
-			// add lightbox HTML to the DOM
-			$('body').append(lightbox);
-			// fill lightbox with .blocks-gallery-grid a hrefs
-			$('.wp-block-gallery').find('.wp-block-image a').each(function() {
-				var $href = $(this).attr('href');
-				$('#ggbl_slider').append(
-					'<li>' +
-					'<img src="' + $href + '">' +
-					'</li>'
-				);
-			});
+		// if the image is linked to a page we don't want the lightbox to open
+		if((/\.(gif|jpg|jpeg|tiff|png)$/i).test($(this).attr("href"))){
+			// prevent default click event
+			e.preventDefault();
+			// determine the index of clicked trigger
+			var slideNum = $('.wp-block-gallery a').index(this);
+			// make sure the user can't scroll while the lightbox is showing
+			$('body').addClass("ggbl_noscroll");
+			// find out if #ggbl_lightbox exists
+			if ($('#ggbl_lightbox').length > 0) {
+				// if it does
+				$('#ggbl_lightbox').fadeIn(300);
+				// otherwise
+			} else {
+				// create HTML markup for lightbox window
+				var lightbox =
+					'<div id="ggbl_lightbox">' +
+					'<a href="#" class="ggbl_close"><span class="dashicons dashicons-no-alt"></span></a>' +
+					'<ul id="ggbl_slider"></ul>' +
+					'<div class="ggbl_nav">' +
+					'<a href="#" class="ggbl_prev ggbl_slide-nav"><span class="dashicons dashicons-arrow-left-alt2"></span></a>' +
+					'<a href="#" class="ggbl_next ggbl_slide-nav"><span class="dashicons dashicons-arrow-right-alt2"></span></a>' +
+					'</div><!-- .ggbl_nav -->' +
+					'</div><!-- #ggbl_lightbox -->';
+				// add lightbox HTML to the DOM
+				$('body').append(lightbox);
+				// fill lightbox with .blocks-gallery-grid a hrefs
+				$('.wp-block-gallery').find('.wp-block-image a').each(function() {
+					var $href = $(this).attr('href');
+					$('#ggbl_slider').append(
+						'<li>' +
+						'<img src="' + $href + '">' +
+						'</li>'
+					);
+				});
+			}
+			// set the slider size based on number of objects in slideshow
+			size = $('#ggbl_slider > li').length;
+			// hide all slides, then show the selected slide
+			$('#ggbl_slider > li').hide();
+			$('#ggbl_slider > li:eq(' + slideNum + ')').show();
+			// set current to selected slide
+			current = slideNum;
 		}
-		// set the slider size based on number of objects in slideshow
-		size = $('#ggbl_slider > li').length;
-		// hide all slides, then show the selected slide
-		$('#ggbl_slider > li').hide();
-		$('#ggbl_slider > li:eq(' + slideNum + ')').show();
-		// set current to selected slide
-		current = slideNum;
 	});
 	// click anywhere on the page to get rid of lightbox window
 	$('body').on('click', '#ggbl_lightbox', function() { // using .on() instead of .live(). more modern, and fixes event bubbling issues
